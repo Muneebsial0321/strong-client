@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.canvas {
+    @apply w-full h-[100vh] bg-gray-500 justify-center items-center
+}
