@@ -1,5 +1,12 @@
 @import "tailwindcss";
+@config "../tailwind.config.js";
 
 .canvas {
-    @apply w-full h-[100vh] bg-gray-500 justify-center items-center
+    @apply w-full h-[100vh] bg-gray-500 flex justify-center items-center
+}
+.bg-primary{
+    @apply bg-[#2a3139]
+}
+.bg-sec{
+    @apply bg-[#3e4649]
 }

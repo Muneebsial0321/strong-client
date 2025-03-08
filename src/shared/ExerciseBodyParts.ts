@@ -1,0 +1,12 @@
+export const ExerciseBodyParts = [ "Chest",
+  "Back",
+  "Shoulders",
+  "Biceps",
+  "Triceps",
+  "Legs",
+  "Glutes",
+  "Core",
+  "Abs",
+  "Calves",
+  "Forearms",
+  "FullBody",]

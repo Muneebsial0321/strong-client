@@ -18,6 +18,8 @@ const navItems = [
     { name: "Login", link: "/auth/login" },
     { name: "Signup", link: "/auth/register" },
     { name: "Home", link: "/home" },
+    { name: "Execrises", link: "/exe" },
+    { name: "Create Execrise", link: "/exe/create" },
 ];
 
 export default function SideBar() {
@@ -29,12 +31,11 @@ export default function SideBar() {
 
     const drawer = (
         <>
-            <Divider />
-            <List className='w-[14rem]'>
+            <List className='w-[14rem] text-white relative bg-gray-800 h-full'>
                 {navItems.map((e, i) => (
-                    <Link to={e.link} key={i}>
+                    <Link onClick={()=>setMobileOpen(false)} to={e.link} key={i}>
                         <ListItem disablePadding>
-                            <ListItemButton sx={{ textAlign: 'center' }}>
+                            <ListItemButton sx={{ ml:"1.5rem" }}>
                                 <ListItemText primary={e.name} />
                             </ListItemButton>
                         </ListItem>
@@ -49,9 +50,14 @@ export default function SideBar() {
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-            <AppBar component="nav">
+            <AppBar
+            id='bg-red'
+            className='bg-black'
+            component="nav">
                 <Toolbar>
+
                     <IconButton
+                    className='text-white'
                         edge="start"
                         onClick={handleDrawerToggle}
                     >
@@ -61,6 +67,7 @@ export default function SideBar() {
             </AppBar>
             <nav>
                 <Drawer
+                
                     variant="temporary"
                     open={mobileOpen}
                     onClose={handleDrawerToggle}

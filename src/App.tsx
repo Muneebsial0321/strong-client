@@ -6,6 +6,7 @@ import Home from "./pages/Home"
 import Execrises from "./pages/Execrises"
 import Workout from "./pages/Workout"
 import SideBar from "./components/SideBar"
+import ExecriseCreate from "./pages/ExecriseCreate"
 const App = () => {
   return (
     <>
@@ -25,6 +26,7 @@ const App = () => {
         {/* exe routes */}
         <Route path="exe">
           <Route path="" element={<Execrises />} />
+          <Route path="create" element={<ExecriseCreate />} />
         </Route>
 
         {/* Workout routes */}
