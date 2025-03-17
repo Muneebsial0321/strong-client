@@ -6,7 +6,7 @@ const Execrises = () => {
     <div
       className="bg-primary"
     >
-  {  [1,1,11,1,1,1,1].map((e)=>(  <ExerciseComp
+  {  [1,1,11,1,1,1,1].map(()=>(  <ExerciseComp
         name="Bench Press"
         category="Barbell"
         bodyPart="chest"
