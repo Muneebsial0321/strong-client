@@ -1,16 +1,27 @@
 import { Button } from "@mui/material"
-import React from "react"
+import React, { useEffect, useState } from "react"
+import UseExercise from "../hooks/UseExercise"
+import { ExerciseSchmea } from "../schema/exercise.schema"
 
 const Execrises = () => {
+  const { findAll } = UseExercise()
+  const [exercises, setExercises] = useState<Partial<ExerciseSchmea>[]>([])
+  const exe = async () => {
+    const data = await findAll()
+    setExercises(data)
+  }
+  useEffect(() => { exe() }, [])
   return (
     <div
-      className="bg-primary"
+      className="bg-primary mt-20"
     >
-  {  [1,1,11,1,1,1,1].map(()=>(  <ExerciseComp
-        name="Bench Press"
-        category="Barbell"
-        bodyPart="chest"
-      />))}
+      {exercises && exercises.map((e, i) => (
+        <ExerciseComp
+          key={i}
+          name={e.name}
+          category={e.category}
+          bodyPart={e.bodyPart}
+        />))}
 
     </div>
   )

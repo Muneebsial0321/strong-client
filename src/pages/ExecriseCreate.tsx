@@ -1,9 +1,20 @@
 import { Button, InputLabel, MenuItem, Select, TextField } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import { ExerciseCategory } from '../shared/ExerciseCategory'
 import { ExerciseBodyParts } from '../shared/ExerciseBodyParts'
+import UseExercise from '../hooks/UseExercise'
 
 const ExecriseCreate = () => {
+    const { createOne } = UseExercise()
+    const [exercise, setExercise] = useState()
+    const __onchange__ = (e) => { setExercise((prev) => ({ ...prev, [e.target.name]: e.target.value })) }
+    const __submit__ =async (e) => {
+        console.log({ exercise });
+        const data = await createOne(exercise!)
+        console.log({data});
+        
+
+    }
     return (
         <div className='canvas bg-primary'>
 
@@ -13,6 +24,7 @@ const ExecriseCreate = () => {
 
                 {/* name */}
                 <TextField
+                    onChange={__onchange__}
                     className='w-full bg-sec text-white placeholder-white'
                     placeholder='Add Name'
                     name="name"
@@ -30,6 +42,7 @@ const ExecriseCreate = () => {
 
                 {/* category */}
                 <SelectComp
+                    onChange={__onchange__}
                     name='category'
                     options={ExerciseCategory}
 
@@ -38,11 +51,12 @@ const ExecriseCreate = () => {
 
                 {/* category */}
                 <SelectComp
+                    onChange={__onchange__}
                     name='bodyParts'
                     options={ExerciseBodyParts} />
 
 
-                <Button variant='contained' className='py-3'>Submit</Button>
+                <Button onClick={__submit__} variant='contained' className='py-3'>Submit</Button>
             </div>
         </div>
     )
@@ -52,33 +66,35 @@ const ExecriseCreate = () => {
 interface SelectCompProps {
     name: string
     options: string[]
+    onChange: (e) => void
 }
 
-const SelectComp: React.FC<SelectCompProps> = ({ name, options }) => {
+const SelectComp: React.FC<SelectCompProps> = ({ name, options, onChange }) => {
     return <>
         <InputLabel className='text-white' id={name}>Age</InputLabel>
         <Select
             className='w-full text-white border placeholder-white border-white'
             name={name}
             id={name}
+            onChange={onChange}
 
             sx={{
                 color: "white", // Text color white
                 "& .MuiSelect-select": {
-                  color: "white", // Ensures selected text is white
+                    color: "white", // Ensures selected text is white
                 },
                 "& .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "white", // White border
+                    borderColor: "white", // White border
                 },
                 "&:hover .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "white", // White border on hover
+                    borderColor: "white", // White border on hover
                 },
                 "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "white", // White border when focused
+                    borderColor: "white", // White border when focused
                 },
-              }}
+            }}
         >
-            {options.map((e, i) => (<MenuItem  key={i} value={e}>{e}</MenuItem>))}
+            {options.map((e, i) => (<MenuItem key={i} value={e}>{e}</MenuItem>))}
         </Select>
     </>
 }
