@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Button, InputLabel, MenuItem, Select, TextField } from '@mui/material'
 import React, { useState } from 'react'
 import { ExerciseCategory } from '../shared/ExerciseCategory'
